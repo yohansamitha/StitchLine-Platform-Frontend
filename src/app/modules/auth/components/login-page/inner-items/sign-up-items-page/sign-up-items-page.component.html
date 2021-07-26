@@ -1,0 +1,100 @@
+<div class="outer">
+  <form (ngSubmit)="register()" [formGroup]="signUpForm" class="example-form">
+
+    <h4 class="booking-type">Please select Account Type</h4>
+    <mat-radio-group aria-label="Select an option">
+      <mat-radio-button (change)="OnRadioButtonChange($event.value)" value="Customer">
+        Customer
+      </mat-radio-button>
+      &nbsp;
+      <mat-radio-button (change)="OnRadioButtonChange($event.value)" value="Admin">Admin</mat-radio-button>
+    </mat-radio-group>
+
+    <!--  Customer Email input  -->
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input formControlName="email" matInput placeholder="Ex. pat@example.com"
+             type="email">
+      <mat-error *ngIf="signUpForm.get('email')?.touched && signUpForm.get('email')?.invalid">
+        Please enter a valid email address
+      </mat-error>
+    </mat-form-field>
+
+    <!--  Customer First Name  -->
+    <mat-form-field class="example-full-width">
+      <mat-label>First Name</mat-label>
+      <input formControlName="name" matInput type="text">
+      <mat-error *ngIf="signUpForm.get('name')?.touched && signUpForm.get('name')?.invalid">
+        Please enter a valid Name
+      </mat-error>
+    </mat-form-field>
+
+    <!--  Customer Address  -->
+    <div *ngIf="customerType">
+      <mat-form-field class="example-full-width">
+        <mat-label>Address</mat-label>
+        <input formControlName="address" matInput type="email">
+        <mat-error *ngIf="signUpForm.get('address')?.touched && signUpForm.get('address')?.invalid">
+          Please enter a valid address
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <!-- Customer Personal Contact -->
+    <mat-form-field class="example-full-width">
+      <mat-label>Contact</mat-label>
+      <input formControlName="mobile" matInput placeholder="+94 71 663 3987"
+             type="tel">
+      <mat-error *ngIf="signUpForm.get('mobile')?.touched && signUpForm.get('mobile')?.invalid">
+        Please enter a valid Customer Contact Number
+      </mat-error>
+    </mat-form-field>
+
+    <!--  Customer username input  -->
+    <mat-form-field class="example-full-width">
+      <mat-label>username</mat-label>
+      <input formControlName="username" matInput placeholder="Ex. pat@example.com"
+             type="email">
+      <mat-error *ngIf="signUpForm.get('username')?.touched && signUpForm.get('username')?.invalid">
+        Please enter a valid username address
+      </mat-error>
+    </mat-form-field>
+
+    <!--  Password  -->
+    <mat-form-field class="example-full-width">
+      <mat-label>Password</mat-label>
+      <input formControlName="password" matInput type="password"
+      >
+      <mat-error *ngIf="signUpForm.get('password')?.touched && signUpForm.get('password')?.invalid">
+        Please enter a valid Password
+      </mat-error>
+    </mat-form-field>
+
+    <div *ngIf="!customerType">
+      <!--  Admin NIC Number  -->
+      <mat-form-field class="example-full-width">
+        <mat-label>Customer NIC Number</mat-label>
+        <input formControlName="nic" matInput type="text">
+        <mat-error *ngIf="signUpForm.get('nic')?.touched && signUpForm.get('nic')?.invalid">
+          Please enter a valid NIC number
+        </mat-error>
+      </mat-form-field>
+
+
+      <!--  employeeNumber input  -->
+      <mat-form-field class="example-full-width">
+        <mat-label>Employee Number</mat-label>
+        <input formControlName="employeeNumber" matInput type="email">
+        <mat-error *ngIf="signUpForm.get('employeeNumber')?.touched && signUpForm.get('employeeNumber')?.invalid">
+          Please enter a valid Employee Number
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+
+    <button class="sign-in-button" mat-raised-button>Register</button>
+    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+  </form>
+
+</div>
+
