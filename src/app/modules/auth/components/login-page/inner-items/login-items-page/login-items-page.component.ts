@@ -28,14 +28,14 @@ export class LoginItemsPageComponent implements OnInit {
       this.loginForm.get('email')?.value.toString().trim(),
       this.loginForm.get('password')?.value.toString().trim()
     ).subscribe((response: any) => {
-      if (this.loginForm.get('email')?.value.toString().trim() == response.email && this.loginForm.get('password')?.value.toString().trim() == response.password) {
+      if (this.loginForm.get('email')?.value.toString().trim() == response.data.email && this.loginForm.get('password')?.value.toString().trim() == response.data.password) {
         const tomorrow = new Date(new Date());
         tomorrow.setDate(tomorrow.getDate() + 1);
         const cookieOption = {
           expires: tomorrow
         }
         this.cookieService.putObject('userToken', response.data, cookieOption);
-        this.router.navigate(['/default']).then(r => {
+        this.router.navigate(['/default']).then(() => {
             console.log("navigate to default")
           }
         );
