@@ -35,10 +35,17 @@ export class LoginItemsPageComponent implements OnInit {
           expires: tomorrow
         }
         this.cookieService.putObject('userToken', response.data, cookieOption);
-        this.router.navigate(['/default']).then(() => {
-            console.log("navigate to default")
-          }
-        );
+        if (response.data.post == "Admin") {
+          this.router.navigate(['/admin']).then(() => {
+              console.log("navigate to admin")
+            }
+          );
+        } else {
+          this.router.navigate(['/default']).then(() => {
+              console.log("navigate to default")
+            }
+          );
+        }
       } else {
         alert("No user found, Please check your user credentials and try again")
       }
