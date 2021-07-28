@@ -24,6 +24,7 @@ export class LoginItemsPageComponent implements OnInit {
   }
 
   //handling login function
+  //handling login function
   login() {
     this.userService.login(
       this.loginForm.get('email')?.value.toString().trim(),
