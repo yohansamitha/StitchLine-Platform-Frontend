@@ -23,6 +23,7 @@ export class LoginItemsPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //handling login function
   login() {
     this.userService.login(
       this.loginForm.get('email')?.value.toString().trim(),
